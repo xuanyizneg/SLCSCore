@@ -1,0 +1,73 @@
+﻿@model SLCSCore.ViewModel.SLCSGenreVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<form asp-controller="SLCS" asp-action="Index" method="get">
+    <p>
+        <!--<select asp-for="MovieGenre" asp-items="Model.Genres">
+            <option value="">
+                All
+            </option>
+        </select>-->
+
+        Title:<input type="text" name="B_BookName"/>
+        <input type="submit" value="Filter"/>
+    </p>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].B_BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].B_Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].B_Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].B_PublishPlace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].B_PublishYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Books) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.B_BookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.B_Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.B_Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.B_PublishPlace)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.B_PublishYear)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.B_Id">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
