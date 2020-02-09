@@ -1,4 +1,5 @@
-﻿@model SLCSCore.ViewModel.SLCSGenreVM
+﻿@model SLCSCore.ViewModel.SLCSGenreVM;
+
 
 @{
     ViewData["Title"] = "Index";
@@ -11,7 +12,7 @@
 </p>
 
 
-<form asp-controller="SLCS" asp-action="Index" method="get">
+<form asp-controller="SLCSHome" asp-action="Index" method="get">
     <p>
         <!--<select asp-for="MovieGenre" asp-items="Model.Genres">
             <option value="">
@@ -24,6 +25,11 @@
     </p>
 </form>
 
+
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFile">
+  <label class="custom-file-label" for="customFile">Choose file</label>
+</div>
 
 <table class="table">
     <thead>

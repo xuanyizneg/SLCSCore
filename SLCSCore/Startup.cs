@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SLCSCore.Data;
 using Microsoft.EntityFrameworkCore;
+using SLCSCore.Service;
 
 namespace SLCSCore
 {
@@ -27,6 +28,8 @@ namespace SLCSCore
         {
             services.AddControllersWithViews();
             services.AddDbContext<SLCSContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SLCSContext")));
+            services.AddMvc(); //MVC註冊DI容器
+            services.AddScoped<IBookService, BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +56,7 @@ namespace SLCSCore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=SLCSHome}/{action=Index}/{id?}");
             });
 
            

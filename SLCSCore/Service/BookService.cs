@@ -30,5 +30,22 @@ namespace SLCSCore.Service
             return _context.Book.Where(b=>b.B_BookName ==value);
         }
 
+        string IBookService.CreateBook(Book newBooks)
+        {
+
+            string rtnMsg = "000000";
+
+            try
+            {
+                _context.Add(newBooks);
+                _context.SaveChanges();
+            }
+            catch(Exception ex) {
+                rtnMsg = ex.Message;
+                
+            }
+
+            return rtnMsg;
+        }
     }
 }
